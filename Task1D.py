@@ -1,4 +1,4 @@
-#This calls the two functions defined in task 1d and displays the data
+# This calls the two functions defined in task 1d and displays the data
 
 from floodsystem.geo import stations_by_river, rivers_with_station
 from floodsystem.stationdata import build_station_list
@@ -26,6 +26,4 @@ for station in stationsByRiver['River Thames']:
     riverThames.append(station.name)
     riverThames.sort()
 
-print(riverAire,'\n', riverCam, '\n', riverThames)
-
-    
+print(riverAire, '\n', riverCam, '\n', riverThames)
