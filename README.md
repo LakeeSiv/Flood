@@ -5,7 +5,7 @@ Engineering, University of Cambridge done by
 
 <li>Lakee SIvaraya (ls914)</li>
 <li>Frank McMullan (fm528)</li>
-<br/>
+
 
 # Tasks
 
@@ -13,7 +13,7 @@ Engineering, University of Cambridge done by
 
 - [x] 1A - <i>(already completed in the template)</i>
 - [x] 1B - completed by Lakee 
-- [ ] 1C
+- [x] 1C - completed by Lakee 
 - [ ] 1D
 - [ ] 1E
 - [ ] 1F
