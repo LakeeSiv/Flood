@@ -1,10 +1,12 @@
-#Tests the file Geos respective modules
+# Tests the file Geos respective modules
 
 from floodsystem.geo import rivers_with_station, stations_by_river
 from floodsystem.station import MonitoringStation
 
+
 def test_rivers_with_station():
-    #test that it returns a set with no duplicates and that it contains all rivers
+    # test that it returns a set with no duplicates and that it contains all rivers
+    
     s_id = "test-s-id"
     m_id = "test-m-id"
     label = ("some station", "Another Station", "Station 3")
@@ -19,6 +21,7 @@ def test_rivers_with_station():
     stations = (s1, s2, s3)
 
     assert rivers_with_station(stations) == {"River X", "River Y"}
+
 
 def test_stations_by_river():
     s_id = "test-s-id"
@@ -35,4 +38,3 @@ def test_stations_by_river():
     stations = (s1, s2, s3)
 
     assert stations_by_river(stations) == {'River X': ['some station', 'Station 3'], 'River Y': ['Another Station']}
-
