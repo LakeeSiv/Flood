@@ -19,9 +19,8 @@ def stations_by_distance(stations, p):
 
     for station in stations:
         coord = station.coord
-        distance = haversine(coord,p)
+        distance = haversine(coord, p)
 
         resulting_arr.append((station, distance))
 
     return sorted_by_key(resulting_arr, 1, reverse=False)
-
