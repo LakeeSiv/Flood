@@ -62,18 +62,3 @@ def stations_by_river(stations):
 
     for station in stations:
 
-
-<< << << < Updated upstream
-   if stationsOnRiver[station.river] is not None:
-        stationsOnRiver[station.river].append(station.name)
-    else:
-        stationsOnRiver[station.river] = [station.name]
-== =====
-    if  stationsOnRiver[station.river] is not None:
-        stationsOnRiver[station.river].append(station)
-    else:
-        stationsOnRiver[station.river] = [station]
-
->>>>>> > Stashed changes
-
-   return stationsOnRiver
