@@ -61,4 +61,8 @@ def stations_by_river(stations):
     stationsOnRiver = dict.fromkeys(riverStations)
 
     for station in stations:
-
+        if stationsOnRiver[station.river] is not None:
+            stationsOnRiver[station.river].append(station)
+        else:
+            stationsOnRiver[station.river] = [station]
+    return stationsOnRiver
