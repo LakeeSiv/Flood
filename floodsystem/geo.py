@@ -41,3 +41,13 @@ def stations_within_radius(stations, centre, r):
             break  # can break since the list is ordered by distance
 
     return result_arr
+
+def rivers_with_stations(stations):
+
+    rivers_with_stations = set()
+
+    for station in stations:
+        if station.rivers =! None:
+            rivers_with_stations.add(station.river)
+
+    return stations_with_river
