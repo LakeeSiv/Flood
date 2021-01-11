@@ -12,7 +12,7 @@ Engineering, University of Cambridge done by
 ## Milestone 1
 
 - [x] 1A - <i>(already completed in the template)</i>
-- [ ] 1B
+- [x] 1B - completed by Lakee 
 - [ ] 1C
 - [ ] 1D
 - [ ] 1E
