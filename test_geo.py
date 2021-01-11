@@ -5,7 +5,7 @@ from floodsystem.station import MonitoringStation
 
 
 def test_rivers_with_station():
-    # test that it returns a set with no duplicates and that it contains all rivers    
+    # test that it returns a set with no duplicates and that it contains all rivers
     s_id = "test-s-id"
     m_id = "test-m-id"
     label = ("some station", "Another Station", "Station 3")
