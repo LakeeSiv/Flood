@@ -36,4 +36,4 @@ def test_stations_by_river():
 
     stations = (s1, s2, s3)
 
-    assert stations_by_river(stations) == {'River X': ['some station', 'Station 3'], 'River Y': ['Another Station']}
+    assert stations_by_river(stations) == {'River X': [s1, s3], 'River Y': [s2]}
