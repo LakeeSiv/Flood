@@ -42,12 +42,13 @@ def stations_within_radius(stations, centre, r):
 
     return result_arr
 
+
 def rivers_with_station(stations):
 
     riversWithStation = set()
 
     for station in stations:
-        if station.river != None:
+        if station.river is not None:
             riversWithStation.add(station.river)
 
     return riversWithStation
@@ -60,16 +61,9 @@ def stations_by_river(stations):
     stationsOnRiver = dict.fromkeys(riverStations)
 
     for station in stations:
-        if  stationsOnRiver[station.river] != None:
+        if stationsOnRiver[station.river] is not None:
             stationsOnRiver[station.river].append(station.name)
         else:
-            stationsOnRiver[station.river]= [station.name]
-            
+            stationsOnRiver[station.river] = [station.name]
 
     return stationsOnRiver
-
-    
-
-    
-
-    
