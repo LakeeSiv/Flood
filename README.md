@@ -14,7 +14,7 @@ Engineering, University of Cambridge done by
 - [x] 1A - <i>(already completed in the template)</i>
 - [x] 1B - completed by Lakee 
 - [x] 1C - completed by Lakee 
-- [ ] 1D
+- [x] 1D - completed by Frank
 - [ ] 1E
 - [ ] 1F
 
