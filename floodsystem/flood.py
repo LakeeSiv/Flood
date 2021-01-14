@@ -21,21 +21,17 @@ def stations_level_over_threshold(stations: list, tol: float) -> list:
 
     return res_list
 
+
 def stations_highest_rel_level(stations, N):
     """Returns a list of N MonitoringStation objects ordered from highest to lowest risk"""
     stations = consistant_typical_range_stations(stations)
-    update_water_levels(stations)
+
     def key(x):
         if x.relative_water_level() is not None:
             return x.relative_water_level()
         else:
             return float(0)
-    stationByHighestLevel = sorted(stations, key = key, reverse = True) #Hoping this will work we shall see
+    stationByHighestLevel = sorted(stations, key=key, reverse=True)  # Hoping this will work we shall see
 
     NstationByLevel = stationByHighestLevel[:N]
     return NstationByLevel
-
-    
-
-
-
