@@ -2,7 +2,7 @@ from test_geo import generate_test_station
 from floodsystem.flood import stations_highest_rel_level, stations_level_over_threshold
 
 
-def test_stations_highest_rel_level():
+def test_stations_level_over_thershold():
     stations = generate_test_station()
     stations[0].typical_range, stations[0].latest_level = (0, 5), 2.5  # Station 1
     stations[1].typical_range, stations[1].latest_level = (0, 2.5), 2.5  # Station 2
