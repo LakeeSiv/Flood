@@ -63,7 +63,7 @@ class MonitoringStation:
         if self.latest_level is None:
             return None
         else:
-            return (self.latest_level - low)(high - low)
+            return (self.latest_level - low) / (high - low)
 
 
 def inconsistent_typical_range_stations(stations):
