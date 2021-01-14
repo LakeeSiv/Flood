@@ -77,3 +77,16 @@ def inconsistent_typical_range_stations(stations):
             inconsistant_list.append(station)
 
     return inconsistant_list
+
+
+def consistant_typical_range_stations(stations):
+    """function takes in a list of stations and returns the list of
+    stations with consistant typical ranges """
+
+    consistant_list = []
+
+    for station in stations:
+        if station.typical_range_consistent() is True:
+            consistant_list.append(station)
+
+    return consistant_list
