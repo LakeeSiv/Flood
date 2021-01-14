@@ -51,6 +51,20 @@ class MonitoringStation:
         else:
             return True
 
+    def relative_water_level(self) -> float:
+        """Function that takes the latest water level and maps it to a number between 0-1,
+            where
+            1: highest typical range
+            0: lowest typical range"""
+
+        high = self.typical_range[1]
+        low = self.typical_range[0]
+
+        if self.latest_level is None:
+            return None
+        else:
+            return (self.latest_level - low) / (high - low)
+
 
 def inconsistent_typical_range_stations(stations):
     """function takes in a list of stations and returns the list of
