@@ -32,5 +32,3 @@ def test_stations_highest_rel_level():
     assert len(stations_highest_rel_level(stations, 7)) != 7
     assert stations_highest_rel_level(stations, 6) == [s6, s4, s5, s3, s1, s2]
 
-
-test_stations_highest_rel_level()
