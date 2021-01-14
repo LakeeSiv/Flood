@@ -38,3 +38,15 @@ class MonitoringStation:
         d += "   river:         {}\n".format(self.river)
         d += "   typical range: {}".format(self.typical_range)
         return d
+
+    def typical_range_consistent(self) -> bool:
+        """checks to see if the typical range
+        is consistant.
+        Inconsistant when: range is empty, or high range < low range"""
+
+        if self.typical_range is None:
+            return False
+        elif self.typical_range[1] > range[0]:
+            return False
+        else:
+            return True
