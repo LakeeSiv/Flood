@@ -35,9 +35,9 @@ jobs:
 
       - name: Run Deliverable 1 code
         run: |
-          python .Taskset1/Task1A.py
+          python .TaskSet1/Task1A.py
 
       - name: Run Deliverable 2 code
         run: |
-          python .Taskset1/Task2A.py
-          python .Taskset1/Task2D.py
+          python .TaskSet1/Task2A.py
+          python .TaskSet1/Task2D.py
