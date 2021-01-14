@@ -15,7 +15,7 @@ Engineering, University of Cambridge done by
 - [x] 1B - completed by Lakee 
 - [x] 1C - completed by Lakee 
 - [x] 1D - completed by Frank
-- [ ] 1E
+- [x] 1E - completed by Frank
 - [ ] 1F
 
 ## Milestone 2 

@@ -12,12 +12,12 @@ def sorted_by_key(x, i, reverse=False):
 
     Sort on first entry of tuple:
 
-      > sorted_by_key([(1, 2), (5, 1]), 0)
+      > sorted_by_key([(1, 2), (5, 1)], 0)
       >>> [(1, 2), (5, 1)]
 
     Sort on second entry of tuple:
 
-      > sorted_by_key([(1, 2), (5, 1]), 1)
+      > sorted_by_key([(1, 2), (5, 1)], 1)
       >>> [(5, 1), (1, 2)]
 
     """
@@ -27,3 +27,8 @@ def sorted_by_key(x, i, reverse=False):
         return element[i]
 
     return sorted(x, key=key, reverse=reverse)
+
+
+def by_value_len(x):
+    '''Sort a dictionary by the length of its values'''
+    return len(x[1])
