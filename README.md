@@ -3,7 +3,7 @@
 This is the Part IA Lent Term computing activity at the Department of
 Engineering, University of Cambridge done by
 
-<li>Lakee SIvaraya (ls914)</li>
+<li>Lakee Sivaraya (ls914)</li>
 <li>Frank McMullan (fm528)</li>
 
 
@@ -16,7 +16,7 @@ Engineering, University of Cambridge done by
 - [x] 1C - completed by Lakee 
 - [x] 1D - completed by Frank
 - [x] 1E - completed by Frank
-- [ ] 1F
+- [x] 1F - completed by Lakee
 
 ## Milestone 2 
 
