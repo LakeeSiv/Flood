@@ -21,7 +21,7 @@ Engineering, University of Cambridge done by
 ## Milestone 2 
 
 - [x] 2A - <i>(already completed in the template)</i>
-- [ ] 2B
+- [x] 2B
 - [ ] 2C
 - [x] 2D - <i>(already completed in the template)</i>
 - [ ] 2E
