@@ -10,7 +10,7 @@ from .utils import *  # noqa
 from haversine import haversine
 
 
-def stations_by_distance(stations, p):
+def stations_by_distance(stations: list, p: tuple) -> list:
     """ Function to calcuate the distance between a station
     and the coordinate p, and returns a list of the station and
     the distance"""
@@ -26,7 +26,7 @@ def stations_by_distance(stations, p):
     return sorted_by_key(resulting_arr, 1, reverse=False)
 
 
-def stations_within_radius(stations, centre, r):
+def stations_within_radius(stations: list, centre: tuple, r: float) -> list:
     """
     Function returns a list of stations which are with a radius r of
     the centre coordinate
