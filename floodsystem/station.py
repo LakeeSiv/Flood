@@ -56,14 +56,16 @@ class MonitoringStation:
             where
             1: highest typical range
             0: lowest typical range"""
+        if self.typical_range_consistent() is True:  # check for consistant trange
+            high = self.typical_range[1]
+            low = self.typical_range[0]
 
-        high = self.typical_range[1]
-        low = self.typical_range[0]
-
-        if self.latest_level is None:
-            return None
+            if self.latest_level is None:
+                return None
+            else:
+                return (self.latest_level - low) / (high - low)
         else:
-            return (self.latest_level - low) / (high - low)
+            return None
 
 
 def inconsistent_typical_range_stations(stations):
