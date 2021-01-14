@@ -29,20 +29,21 @@ def test_stations_within_radius():
 
 def generate_test_station():
     '''Generate a list of MonitoringStation objects to use for testing'''
+    
     s_id = "test-s-id"
     m_id = "test-m-id"
-    label = ("some station", "Another Station", "Station 3")
-    coord = (-2.0, 4.0)
+    label = ["Station 1", "Station 2", "Station 3","Station 4","Station 5","Station 6","Station 7" ]
+    coord = [(0, 4),(0, 8),(0, 12),(0, 16),(0, 30),(0, 50),(0, 60) ]
     trange = (-2.3, 3.4445)
     river = ("River X", "River Y", "River Z")
     town = "My Town"
-    s1 = MonitoringStation(s_id, m_id, label[0], coord, trange, river[0], town)
-    s2 = MonitoringStation(s_id, m_id, label[1], coord, trange, river[1], town)
-    s3 = MonitoringStation(s_id, m_id, label[2], coord, trange, river[0], town)
-    s4 = MonitoringStation(s_id, m_id, label[2], coord, trange, river[1], town)
-    s5 = MonitoringStation(s_id, m_id, label[2], coord, trange, river[1], town)
-    s6 = MonitoringStation(s_id, m_id, label[2], coord, trange, river[2], town)
-    s7 = MonitoringStation(s_id, m_id, label[2], coord, trange, river[2], town)
+    s1 = MonitoringStation(s_id, m_id, label[0], coord[0], trange, river[0], town)
+    s2 = MonitoringStation(s_id, m_id, label[1], coord[1], trange, river[1], town)
+    s3 = MonitoringStation(s_id, m_id, label[2], coord[2], trange, river[0], town)
+    s4 = MonitoringStation(s_id, m_id, label[3], coord[3], trange, river[1], town)
+    s5 = MonitoringStation(s_id, m_id, label[4], coord[4], trange, river[1], town)
+    s6 = MonitoringStation(s_id, m_id, label[5], coord[5], trange, river[2], town)
+    s7 = MonitoringStation(s_id, m_id, label[6], coord[6], trange, river[2], town)
 
     return [s1, s2, s3, s4, s5, s6, s7]
 
