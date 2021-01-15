@@ -1,5 +1,20 @@
 from test_geo import generate_test_station
-from floodsystem.flood import stations_highest_rel_level
+from floodsystem.flood import stations_highest_rel_level, stations_level_over_threshold
+
+
+def test_stations_level_over_thershold():
+    stations = generate_test_station()
+    stations[0].typical_range, stations[0].latest_level = (0, 5), 2.5  # Station 1
+    stations[1].typical_range, stations[1].latest_level = (0, 2.5), 2.5  # Station 2
+    stations[2].typical_range, stations[2].latest_level = (0, 1), 0  # Station 3
+
+    # all other stations are inconsistant
+
+    over_thers_stations = stations_level_over_threshold(stations, 0.2)
+    # Station 3 lower that thershold
+
+    assert over_thers_stations[0][1] == 0.5
+    assert over_thers_stations[1][1] == 1
 
 
 def test_stations_highest_rel_level():
@@ -16,6 +31,3 @@ def test_stations_highest_rel_level():
     assert stations_highest_rel_level(stations, 2) == [s6, s4]
     assert len(stations_highest_rel_level(stations, 7)) != 7
     assert stations_highest_rel_level(stations, 6) == [s6, s4, s5, s3, s1, s2]
-
-
-test_stations_highest_rel_level()

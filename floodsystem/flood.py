@@ -1,6 +1,5 @@
 
 from .station import consistant_typical_range_stations
-from .stationdata import update_water_levels
 
 
 def stations_level_over_threshold(stations: list, tol: float) -> list:
