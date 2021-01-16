@@ -31,6 +31,5 @@ def stations_highest_rel_level(stations, N):
         else:
             return float(0)
     stationByHighestLevel = sorted(stations, key=key, reverse=True)  # Hoping this will work we shall see
-
     NstationByLevel = stationByHighestLevel[:N]
     return NstationByLevel
