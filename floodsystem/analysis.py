@@ -38,7 +38,7 @@ def sort_risk_level(stations):
         stationInfo = '{}, {}'.format(stationName, stationTown)
         """
         remeber stations_level_over_threshold returns an array of
-        tuples containing station objects and rel_level, we 
+        tuples containing station objects and rel_level, we
         only want a list of station objects
         """
         if station in [tuple[0] for tuple in stationsSevere]:

@@ -1,7 +1,7 @@
 import pandas as pd
 import plotly.graph_objects as go
 
-import dash 
+import dash
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
@@ -20,6 +20,8 @@ df = pd.DataFrame(station_list, columns=["name", "coord", "severity"])
 df[["lat", "lon"]] = pd.DataFrame(df["coord"].tolist(), index=df.index)
 
 # <------variable styling for marker-------->
+
+
 def severity_to_color(row):
     if row["severity"] == "S":
         return "red"
@@ -39,6 +41,7 @@ def marker(row):
     else:
         return "circle"
 
+
 def marker_size(row):
     if row["severity"] == "S":
         return 15
@@ -48,6 +51,7 @@ def marker_size(row):
         return 7.5
     else:
         return 5
+
 
 df["colour"] = df.apply(severity_to_color, axis=1)
 df["marker"] = df.apply(marker, axis=1)
@@ -74,14 +78,14 @@ app.layout = html.Div(
                                     "label": "HIGH", "value": "H"}, {
                                         "label": "MEDIUM", "value": "M"}, {
                                             "label": "LOW", "value": "L"},
-                                            {
+                        {
                                             "label": "SEVERE & HIGH", "value": "SH"},
-                                            
-                                            ], multi=False, value="ALL", style={
-                                                "background": "black"}), html.Div(
-                                                    id="status_text", children=[]), html.Br(), dcc.Graph(
-                                                        id="map", figure={}, style={
-                                                            "width": "100vh", "height": "78.5vh"}), ], id="container",)
+
+                    ], multi=False, value="ALL", style={
+                        "background": "black"}), html.Div(
+            id="status_text", children=[]), html.Br(), dcc.Graph(
+            id="map", figure={}, style={
+                "width": "100vh", "height": "78.5vh"}), ], id="container",)
 
 
 @app.callback(
@@ -107,7 +111,6 @@ def update_graph(option_slctd):
     container = f"Severity Shown: {text}"
 
     dff = df.copy()
-    
 
     if option_slctd != "ALL":
         if option_slctd == "SH":
@@ -118,9 +121,9 @@ def update_graph(option_slctd):
     fig = go.Figure(data=go.Scattergeo(
         lat=dff["lat"],
         lon=dff["lon"],
-        
+
         text=dff["text"],
-        hoverinfo = "text",
+        hoverinfo="text",
         mode="markers",
         marker_color=(dff["colour"]),
         marker_size=dff["marker_size"],
