@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    font-family: monospace;
+}
+
+h1 {
+    text-align: center;
+    color: #9B8E8C;
+    margin-bottom: 7px;
+}
+
+h4 {
+    text-align: center;
+    color: #9B8E8C;
+    margin-bottom: 7px;
+    margin-top: 6px;
+}
+
+#container {
+    margin: 0;
+    background-color: #1f1f1f;
+    text-align: center;
+}
+
+#map {
+    margin: 0;
+    background-color: #1f1f1f;
+    display: block;
+    margin: auto;
+}
+
+#select {
+    width: 25%;
+    display: block;
+    margin: auto;
+    background-color: black;
+}
+
+#status_text {
+    margin-top: 10px;
+    text-align: center;
+    color: #9B8E8C;
+    background: #1f1f1f;
+}
