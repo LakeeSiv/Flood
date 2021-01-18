@@ -1,59 +1,25 @@
 import pandas as pd
 import plotly.graph_objects as go
 
-import dash  # (version 1.12.0) pip install dash
+import dash 
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
+from floodsystem.stationdata import build_station_list, update_water_levels
+from floodsystem.station import consistant_typical_range_stations
+from floodsystem.analysis import sort_risk_level
 
+# get and process the data
+stations = build_station_list()
+stations = consistant_typical_range_stations(stations)
+update_water_levels(stations)
 
-class Station():
-    def __init__(self, name, coordinate, warn):
-        self.name = name
-        self.coordinate = coordinate
-        self.warn = warn
-
-    def __repr__(self):
-        return (f"{self.name} {self.coordinate} {self.warn}\n")
-
-
-stations = [
-    Station(
-        "Emmanuel College, Cambridge",
-         (52.2,0.12347),
-        "S"),
-    Station(
-        "Bath City Centre, Bath",
-        
-         (51.3794,-2.36027),
-        "M"),
-    Station(
-        "Glasgow",
-         (55.8636,-4.2352),
-        "L"),
-    Station(
-        "N/A",
-        (-4,
-         52),
-        "H")]
-
-# import random
-# for i in range(1,50):
-#     for j in range(1,50):
-#         arr = [0,0]
-#         arr[0] = (-2+random.random())*1.02**i
-#         arr[1] = 51*1.002**j
-#         stations.append(Station(f"{i}{j}", tuple(arr), random.choice(["S", "H", "M", "L"])))
-
-
-station_list = []
-for station in stations:
-    station_list.append([station.name, station.coordinate, station.warn])
+station_list = sort_risk_level(stations)
 
 df = pd.DataFrame(station_list, columns=["name", "coord", "severity"])
 df[["lat", "lon"]] = pd.DataFrame(df["coord"].tolist(), index=df.index)
 
-
+# <------variable styling for marker-------->
 def severity_to_color(row):
     if row["severity"] == "S":
         return "red"
@@ -68,17 +34,33 @@ def severity_to_color(row):
 def marker(row):
     if row["severity"] == "S":
         return "x"
+    elif row["severity"] == "H":
+        return "diamond"
     else:
         return "circle"
 
+def marker_size(row):
+    if row["severity"] == "S":
+        return 15
+    elif row["severity"] == "H":
+        return 10
+    elif row["severity"] == "H":
+        return 7.5
+    else:
+        return 5
 
 df["colour"] = df.apply(severity_to_color, axis=1)
 df["marker"] = df.apply(marker, axis=1)
+df["marker_size"] = df.apply(marker_size, axis=1)
+# <------variable styling for marker--------/>
 
+df["text"] = df["name"] + "<br>" + df["coord"].astype(str)
+
+# app made with Dash
 
 app = dash.Dash(__name__)
 server = app.server
-app.title = "Lakee Sivaraya"
+app.title = "Flood Warning System"
 
 app.layout = html.Div(
     [
@@ -91,7 +73,11 @@ app.layout = html.Div(
                                 "label": "SEVERE", "value": "S"}, {
                                     "label": "HIGH", "value": "H"}, {
                                         "label": "MEDIUM", "value": "M"}, {
-                                            "label": "LOW", "value": "L"}], multi=False, value="ALL", style={
+                                            "label": "LOW", "value": "L"},
+                                            {
+                                            "label": "SEVERE & HIGH", "value": "SH"},
+                                            
+                                            ], multi=False, value="ALL", style={
                                                 "background": "black"}), html.Div(
                                                     id="status_text", children=[]), html.Br(), dcc.Graph(
                                                         id="map", figure={}, style={
@@ -113,25 +99,31 @@ def update_graph(option_slctd):
         text = "HIGH (orange)"
     elif option_slctd == "L":
         text = "LOW (green)"
+    elif option_slctd == "SH":
+        text = "SEVERE (red), HIGH (orange)"
     else:
         text = "SEVERE (red), HIGH (orange), MEDIUM (yellow), LOW (green)"
 
     container = f"Severity Shown: {text}"
 
     dff = df.copy()
+    
 
     if option_slctd != "ALL":
-        dff = dff[dff["severity"] == option_slctd]
+        if option_slctd == "SH":
+            dff = dff[(dff["severity"] == "H") | (dff["severity"] == "S")]
+        else:
+            dff = dff[dff["severity"] == option_slctd]
 
     fig = go.Figure(data=go.Scattergeo(
         lat=dff["lat"],
         lon=dff["lon"],
         
-        text=dff["name"],
+        text=dff["text"],
         hoverinfo = "text",
         mode="markers",
         marker_color=(dff["colour"]),
-        marker_size=10,
+        marker_size=dff["marker_size"],
         marker_line_width=1,
         marker_line_color="black",
         marker_symbol=dff["marker"]
