@@ -26,7 +26,7 @@ Engineering, University of Cambridge done by
 - [x] 2D - <i>(already completed in the template)</i>
 - [x] 2E - completed by Frank
 - [ ] 2F
-- [ ] 2G
+- [x] 2G - completed by Frank and Lakee
 
 
 
