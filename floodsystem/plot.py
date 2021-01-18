@@ -29,6 +29,7 @@ def plot_water_levels(stations, dates, levels):
         fig.tight_layout()
         
         fig.show()
+        plt.show()
 
     elif len(stations) == 1:
         plt.plot(dates[0], levels[0])
