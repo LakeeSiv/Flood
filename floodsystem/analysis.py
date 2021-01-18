@@ -21,6 +21,7 @@ def polyfit(dates: list, levels: list, p: int):
         except np.RankWarning:
             warnings.warn("Warning the degree is too high for the size of data given.\nPlease use a lower degree")
 
+
 def sort_risk_level(stations):
     '''Sorts stations into 4 levels of risk Severe, high, moderate and low with
     relative river levels of 3.5, 2.5, 2 and 1 repectively.'''
@@ -28,14 +29,14 @@ def sort_risk_level(stations):
     stationsSevere = stations_level_over_threshold(stations, 3.5)
     stationsHigh = stations_level_over_threshold(stations, 2.5)
     stationsModerate = stations_level_over_threshold(stations, 2.0)
-    stationsLow = stations_level_over_threshold(stations, 1.0)
+    # stationsLow = stations_level_over_threshold(stations, 1.0)
     stationsSorted = []
     for station in stations:
         stationName = station.name
         stationCoOrd = station.coord
         stationTown = station.town
         stationInfo = '{}, {}'.format(stationName, stationTown)
-        
+
         if station in stationsSevere:
             station.risk_level = 'S'
             stationSeverity = 'S'
@@ -49,8 +50,7 @@ def sort_risk_level(stations):
             station.risk_level = 'L'
             stationSeverity = 'L'
 
-        stationData = (stationInfo, stationCoOrd, stationSeverity)
+        stationData = [stationInfo, stationCoOrd, stationSeverity]
         stationsSorted.append(stationData)
-            
+
     return stationsSorted
-    
