@@ -36,14 +36,18 @@ def sort_risk_level(stations):
         stationCoOrd = station.coord
         stationTown = station.town
         stationInfo = '{}, {}'.format(stationName, stationTown)
-
-        if station in stationsSevere:
+        """
+        remeber stations_level_over_threshold returns an array of
+        tuples containing station objects and rel_level, we 
+        only want a list of station objects
+        """
+        if station in [tuple[0] for tuple in stationsSevere]:
             station.risk_level = 'S'
             stationSeverity = 'S'
-        elif station in stationsHigh:
+        elif station in [tuple[0] for tuple in stationsHigh]:
             station.risk_level = 'H'
             stationSeverity = 'H'
-        elif station in stationsModerate:
+        elif station in [tuple[0] for tuple in stationsModerate]:
             station.risk_level = 'M'
             stationSeverity = 'M'
         else:
