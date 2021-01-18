@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+# from .analysis import polyfit
 
 
 def plot_water_levels(stations, dates, levels):
@@ -41,3 +42,9 @@ def plot_water_levels(stations, dates, levels):
         plt.xticks(rotation=60)
         plt.tight_layout()
         plt.show()
+
+# def plot_water_level_with_fit(station, dates, levels, p):
+
+#     """  """
+#     if
+#     poly, d0 = polyfit()
