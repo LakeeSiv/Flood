@@ -37,12 +37,16 @@ def sort_risk_level(stations):
         stationInfo = '{}, {}'.format(stationName, stationTown)
         
         if station in stationsSevere:
+            station.risk_level = 'S'
             stationSeverity = 'S'
         elif station in stationsHigh:
+            station.risk_level = 'H'
             stationSeverity = 'H'
         elif station in stationsModerate:
+            station.risk_level = 'M'
             stationSeverity = 'M'
         else:
+            station.risk_level = 'L'
             stationSeverity = 'L'
 
         stationData = (stationInfo, stationCoOrd, stationSeverity)
