@@ -24,7 +24,7 @@ Engineering, University of Cambridge done by
 - [x] 2B - completed by Lakee
 - [x] 2C - completed by Frank
 - [x] 2D - <i>(already completed in the template)</i>
-- [ ] 2E
+- [x] 2E - completed by Frank
 - [ ] 2F
 - [ ] 2G
 
@@ -33,5 +33,4 @@ Engineering, University of Cambridge done by
 # Documentation
 
 The activity is documented at
-https://cued-partia-flood-warning.readthedocs.io/. Fork this repository
-to start the activity.
+https://cued-partia-flood-warning.readthedocs.io/. 
