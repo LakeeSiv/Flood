@@ -9,7 +9,7 @@ Engineering, University of Cambridge done by
 # Webapp
 
 <p align="center">
-<img src="./images/demo.gif" width=100% 
+<img src="./imgs/demo.gif" width=100% 
 centre>
 </p>
 
