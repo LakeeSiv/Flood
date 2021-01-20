@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
-# from .analysis import polyfit
-
+from .analysis import polyfit
+from matplotlib.dates import date2num
 
 def plot_water_levels(stations, dates, levels):
 
@@ -43,8 +43,35 @@ def plot_water_levels(stations, dates, levels):
         plt.tight_layout()
         plt.show()
 
-# def plot_water_level_with_fit(station, dates, levels, p):
+def plot_water_level_with_fit(stations, dates, levels, p):
 
-#     """  """
-#     if
-#     poly, d0 = polyfit()
+    """  """
+    
+    cols = 3
+
+    N = len(stations)
+    rows = N // cols + N % cols
+
+    plt.style.use("seaborn")
+    fig = plt.figure(1)
+    position = range(1,N+1)
+
+    for i in range(N):
+        station = stations[i]
+        ax = fig.add_subplot(rows,cols,position[i])
+        ax.axhline(station.typical_range[0], color='b', ls='--')
+        ax.axhline(station.typical_range[1], color='r', ls='--')
+        ax.plot(dates[i], levels[i])
+        print(dates[i][-1])
+        poly, d0 = polyfit(dates[i], levels[i],p)
+        ax.plot(dates[i], poly(date2num(dates[i])-d0))
+        ax.set_title(station.name)
+        ax.set_xlabel('Dates')
+        ax.set_ylabel('Water Level(m)')
+        ax.tick_params(axis='x', rotation=30)
+        ax.set_xbound(dates[i][0],dates[i][-1])
+    plt.tight_layout()
+    plt.show()
+
+
+    
