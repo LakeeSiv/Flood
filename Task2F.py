@@ -11,10 +11,14 @@ def run():
     top5StationsDates = []
     top5StationsLevels = []
     for top5station in top5Stations:
-        stationDates, stationLevels = datafetcher.fetch_measure_levels(top5station.measure_id, timedelta(days=10))
+        stationDates, stationLevels = datafetcher.fetch_measure_levels(top5station.measure_id, timedelta(days=2))
         top5StationsDates.append(stationDates)
         top5StationsLevels.append(stationLevels)
 
+    # single object input
+    plot.plot_water_level_with_fit(top5Stations[0], top5StationsDates[0], top5StationsLevels[0], 4)
+
+    # list of object input
     plot.plot_water_level_with_fit(top5Stations, top5StationsDates, top5StationsLevels, 4)
 
 
