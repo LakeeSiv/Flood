@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 from .analysis import polyfit
 from matplotlib.dates import date2num
 
+
 def plot_water_levels(stations, dates, levels):
 
     if len(stations) > 1:
@@ -43,35 +44,59 @@ def plot_water_levels(stations, dates, levels):
         plt.tight_layout()
         plt.show()
 
+
 def plot_water_level_with_fit(stations, dates, levels, p):
-
-    """  """
-    
-    cols = 3
-
-    N = len(stations)
-    rows = N // cols + N % cols
+    """Can take a single station object and its data, or can
+    take a list of station objects, with its list of data, then plots
+    the graph of the data along side a polyfitted graph with degree p  """
 
     plt.style.use("seaborn")
-    fig = plt.figure(1)
-    position = range(1,N+1)
 
-    for i in range(N):
-        station = stations[i]
-        ax = fig.add_subplot(rows,cols,position[i])
-        ax.axhline(station.typical_range[0], color='b', ls='--')
-        ax.axhline(station.typical_range[1], color='r', ls='--')
-        ax.plot(dates[i], levels[i])
-        print(dates[i][-1])
-        poly, d0 = polyfit(dates[i], levels[i],p)
-        ax.plot(dates[i], poly(date2num(dates[i])-d0))
-        ax.set_title(station.name)
-        ax.set_xlabel('Dates')
-        ax.set_ylabel('Water Level(m)')
-        ax.tick_params(axis='x', rotation=30)
-        ax.set_xbound(dates[i][0],dates[i][-1])
-    plt.tight_layout()
+    # first handle list of stations
+    if isinstance(stations, list):
+
+        cols = 3
+        N = len(stations)
+
+        rows = N // cols + N % cols
+
+        position = range(1, N + 1)
+
+        fig = plt.figure(1)
+
+        # iterate through each stations and plot
+        for i in range(N):
+            station = stations[i]
+            ax = fig.add_subplot(rows, cols, position[i])
+            ax.axhline(station.typical_range[0], color='b', ls='--', label="low range")
+            ax.axhline(station.typical_range[1], color='r', ls='--', label="high range")
+            ax.plot(dates[i], levels[i], color="black", label="Water level")
+
+            poly, d0 = polyfit(dates[i], levels[i], p)
+            ax.plot(dates[i], poly(date2num(dates[i]) - d0), label="Fitted water level")
+            ax.set_title(station.name)
+            ax.set_xlabel('Dates')
+            ax.set_ylabel('Water Level(m)')
+            ax.tick_params(axis='x', rotation=30)
+            ax.set_xbound(dates[i][0], dates[i][-1])
+            ax.legend(loc="upper left", prop={"size": 7}, fancybox=True, framealpha=0.5)
+        plt.tight_layout(pad=0)
+
+    # now handle single station object
+    else:
+        station = stations
+        plt.axhline(station.typical_range[0], color='b', ls='--', label="low range")
+        plt.axhline(station.typical_range[1], color='r', ls='--', label="high range")
+        plt.plot(dates, levels, color="black", label="Water level")
+
+        poly, d0 = polyfit(dates, levels, p)
+        plt.plot(dates, poly(date2num(dates) - d0), label="Fitted water level")
+        plt.title(station.name)
+        plt.xlabel('Dates')
+        plt.ylabel('Water Level(m)')
+        plt.tick_params(axis='x', rotation=30)
+        plt.xlim(dates[-1], dates[0])
+
+        plt.legend()
+
     plt.show()
-
-
-    
