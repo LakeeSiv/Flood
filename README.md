@@ -36,7 +36,7 @@ of flooding
 - [x] 2C - completed by Frank
 - [x] 2D - <i>(already completed in the template)</i>
 - [x] 2E - completed by Frank
-- [ ] 2F
+- [x] 2F - completed by Lakee
 - [x] 2G - completed by Frank (Analysis) and Lakee (Webapp)
 
 
