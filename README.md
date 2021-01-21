@@ -26,7 +26,7 @@ Engineering, University of Cambridge done by
 <li>Lakee Sivaraya (ls914)</li>
 <li>Frank McMullan (fm528)</li>
 
-The activty involves using real-time river level data at nearly 000 monitoring stations that is made available by the Department for Environment Food and Rural Affairs (DEFRA) at [https://environment.data.gov.uk/](https://environment.data.gov.uk/)
+The activty involves using real-time river level data at nearly 2000 monitoring stations that is made available by the Department for Environment Food and Rural Affairs (DEFRA) at [https://environment.data.gov.uk/](https://environment.data.gov.uk/)
 
 As a team we had to complete the [tasks](#Tasks) at [https://cued-partia-flood-warning.readthedocs.io/en/latest/deliverables.html](https://cued-partia-flood-warning.readthedocs.io/en/latest/deliverables.html)
 
@@ -56,7 +56,7 @@ This section covers how to run the webapp locally.
 2. Install the requirements
 
     ```bash
-     pip install -r requirements.txt
+    pip install -r requirements.txt
     ```
 3. Run `app_G.py1`
 
@@ -95,7 +95,7 @@ This section covers how to run the webapp locally.
 - [x] 2D - <i>(already completed in the template)</i>
 - [x] 2E - completed by Frank
 - [x] 2F - completed by Lakee
-- [x] 2G - completed by Frank ([Analysis (sort_by_risk)](./floodsystem/analysis.py)) and Lakee ([Webapp](app_G.py))
+- [x] 2G - completed by Frank ([Analysis (sort_by_risk_level)](./floodsystem/analysis.py)) and Lakee ([Webapp](app_G.py))
 
 
 
