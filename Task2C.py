@@ -7,7 +7,7 @@ stations = build_station_list()
 
 def run():
     update_water_levels(stations)
-    topStations = stations_highest_rel_level(stations, 10)
+    topStations = stations_highest_rel_level(stations, 100)
     for i in topStations:
         print('{}  {}'.format(i.name, i.relative_water_level()))
 
