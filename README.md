@@ -8,8 +8,8 @@
     <li>
       <a href="#Tasks">Tasks</a>
       <ul>
-        <li><a href="#Milestone 1">Milestone-1</a></li>
-        <li><a href="#Milestone 2">Milestone-2</a></li>
+        <li><a href="#Milestone-1">Milestone 1</a></li>
+        <li><a href="#Milestone-2">Milestone 2</a></li>
       </ul>
     </li>
     <li><a href="#Documentation">Documentation</a></li>
@@ -44,19 +44,25 @@ The role of this webpage is to use real time data to predict if an area is at ri
 You can view a live version of this app at:
 [https://flood-lsfm.herokuapp.com/](https://flood-lsfm.herokuapp.com/)
 
+>Note: Sometimes when opening the website, you run into an application error, this is beacuse I used Heroku to host my webapp, and Heroku is notorius for being quite slow. Additionally we are fetching data from over 2000 stations, so it can crash. If it does crash, wait a few minutes and go back onto the website, in most cases it should work again - Lakee
+
 # Installation
 This section covers how to run the webapp locally.
 1. Clone the repo
+
     ```bash
     git clone https://github.com/cued-ia-computing/flood-fm528-ls914.git
     ```
 2. Install the requirements
+
     ```bash
      pip install -r requirements.txt
     ```
 3. Run `app_G.py1`
+
     ```python
     python app_G
+
     ```
     You should get an output in the terminal that should look something like
     ```
@@ -68,6 +74,7 @@ This section covers how to run the webapp locally.
     Use a production WSGI server instead.
     * Debug mode: on
     ```
+    
     Open the link on the first line to view the website locally
 # Tasks
 
@@ -88,7 +95,7 @@ This section covers how to run the webapp locally.
 - [x] 2D - <i>(already completed in the template)</i>
 - [x] 2E - completed by Frank
 - [x] 2F - completed by Lakee
-- [x] 2G - completed by Frank ([Analysis](./floodsystem/analysis.py)) and Lakee ([Webapp](app_G.py))
+- [x] 2G - completed by Frank ([Analysis (sort_by_risk)](./floodsystem/analysis.py)) and Lakee ([Webapp](app_G.py))
 
 
 
