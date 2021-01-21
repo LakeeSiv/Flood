@@ -23,8 +23,8 @@ def polyfit(dates: list, levels: list, p: int):
 
 
 def sort_risk_level(stations):
-    '''Sorts stations into 4 levels of risk Severe, high, moderate and low with
-    relative river levels of severe, high, moderate and low repectively.'''
+    '''Sorts stations into 4 levels of risk Severe, high, moderate with
+    relative river levels of 10, 5 and 3 repectively.'''
     severe, high, moderate = 10, 5, 3
 
     stationsSevere = stations_level_over_threshold(stations, severe)
