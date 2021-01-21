@@ -8,8 +8,8 @@
     <li>
       <a href="#Tasks">Tasks</a>
       <ul>
-        <li><a href="#Milestone 1">Milestone 1</a></li>
-        <li><a href="#Milestone 2">Milestone 2</a></li>
+        <li><a href="#Milestone 1">Milestone-1</a></li>
+        <li><a href="#Milestone 2">Milestone-2</a></li>
       </ul>
     </li>
     <li><a href="#Documentation">Documentation</a></li>
