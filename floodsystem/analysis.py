@@ -24,18 +24,27 @@ def polyfit(dates: list, levels: list, p: int):
 
 def sort_risk_level(stations):
     '''Sorts stations into 4 levels of risk Severe, high, moderate and low with
-    relative river levels of 3.5, 2.5, 2 and 1 repectively.'''
+    relative river levels of severe, high, moderate and low repectively.'''
+    severe, high, moderate = 10, 5, 3
 
-    stationsSevere = stations_level_over_threshold(stations, 3.5)
-    stationsHigh = stations_level_over_threshold(stations, 2.5)
-    stationsModerate = stations_level_over_threshold(stations, 2.0)
-    # stationsLow = stations_level_over_threshold(stations, 1.0)
+    stationsSevere = stations_level_over_threshold(stations, severe)
+    stationsHigh = stations_level_over_threshold(stations, high)
+    stationsModerate = stations_level_over_threshold(stations, moderate)
+
     stationsSorted = []
     for station in stations:
         stationName = station.name
         stationCoOrd = station.coord
         stationTown = station.town
-        stationInfo = '{}, {}'.format(stationName, stationTown)
+        rel_water_level = station.relative_water_level()
+
+        if rel_water_level is None:
+            # invalid stations
+            continue
+        else:
+            rel_water_level = round(rel_water_level, 3)
+
+        stationInfo = '{}, {},<br>Relative Water Level : {}'.format(stationName, stationTown, rel_water_level)
         """
         remeber stations_level_over_threshold returns an array of
         tuples containing station objects and rel_level, we
