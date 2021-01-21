@@ -1,3 +1,10 @@
+"""
+-------------------------------------------IMPORTANT--------------------------------------------------
+It was found that sometimes the water level data was inconsistant, for example, once a station returned
+an array of numbers and lists, which is inocrrect, as it should only return an array of numbers
+"""
+
+
 from floodsystem import datafetcher, flood, plot, station, stationdata
 from datetime import timedelta
 
@@ -7,19 +14,31 @@ def run():
     stationdata.update_water_levels(stations)
     stations = station.consistant_typical_range_stations(stations)
 
-    top5Stations = flood.stations_highest_rel_level(stations, 5)
-    top5StationsDates = []
-    top5StationsLevels = []
-    for top5station in top5Stations:
-        stationDates, stationLevels = datafetcher.fetch_measure_levels(top5station.measure_id, timedelta(days=2))
-        top5StationsDates.append(stationDates)
-        top5StationsLevels.append(stationLevels)
+    top10Stations = flood.stations_highest_rel_level(stations, 10)
+
+    topStations = []
+    topStationsDates = []
+    topStationsLevels = []
+    counter = 0
+    NUMBER_PLOTS = 5
+
+    for st in top10Stations:
+        stationDates, stationLevels = datafetcher.fetch_measure_levels(st.measure_id, timedelta(days=2))
+
+        # only consistant ones get saved
+        if all(isinstance(x, (int, float)) for x in stationLevels):
+            counter += 1
+            topStations.append(st)
+            topStationsDates.append(stationDates)
+            topStationsLevels.append(stationLevels)
+        if counter == NUMBER_PLOTS:
+            break
 
     # single object input
-    plot.plot_water_level_with_fit(top5Stations[0], top5StationsDates[0], top5StationsLevels[0], 4)
+    plot.plot_water_level_with_fit(topStations[0], topStationsDates[0], topStationsLevels[0], 4)
 
     # list of object input
-    plot.plot_water_level_with_fit(top5Stations, top5StationsDates, top5StationsLevels, 4)
+    plot.plot_water_level_with_fit(topStations, topStationsDates, topStationsLevels, 4)
 
 
 if __name__ == "__main__":
