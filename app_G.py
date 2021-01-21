@@ -50,7 +50,7 @@ def marker_size(row):
     elif row["severity"] == "H":
         return 7.5
     else:
-        return 5
+        return 4
 
 
 df["colour"] = df.apply(severity_to_color, axis=1)
