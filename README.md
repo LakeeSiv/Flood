@@ -58,10 +58,10 @@ This section covers how to run the webapp locally.
     ```bash
     pip install -r requirements.txt
     ```
-3. Run `app_G.py1`
+3. Run `app_G.py`
 
     ```python
-    python app_G
+    python app_G.py
 
     ```
     You should get an output in the terminal that should look something like
