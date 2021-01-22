@@ -36,7 +36,7 @@ def run():
 
     # single object input
 
-    plot.plot_water_level_with_fit(topStations[0], topStationsDates[0], topStationsLevels[0], 4)
+    # plot.plot_water_level_with_fit(topStations[0], topStationsDates[0], topStationsLevels[0], 4)
 
     # list of object input
     plot.plot_water_level_with_fit(topStations, topStationsDates, topStationsLevels, 4)
