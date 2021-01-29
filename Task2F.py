@@ -26,7 +26,7 @@ def run():
         stationDates, stationLevels = datafetcher.fetch_measure_levels(st.measure_id, timedelta(days=2))
 
         # only consistant ones get saved
-        if all(isinstance(x, (int, float)) for x in stationLevels):
+        if all(isinstance(x, (int, float)) for x in stationLevels) and stationDates != []:
             counter += 1
             topStations.append(st)
             topStationsDates.append(stationDates)
