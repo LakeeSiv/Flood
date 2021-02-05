@@ -1,3 +1,7 @@
+# Important Note
+
+The original repository was part of a the Engineering Deparment's Lent Term Computing Organisation group (this allows for the coursework to be marked easily by them). Since that repository was private, I duplicated the repo (preserving the commit history) into my own repo, instructions on how to do this can be found on [GitHub's documentation](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/duplicating-a-repository)
+
 
 <details open="open">
   <summary>Table of Contents</summary>
